@@ -1,25 +1,35 @@
 
-class User:
+class Read: #add는 Read class에서 담당
+    def locate(self):
+        location_u = open(input(("\nEnter USER file location\n")),encoding = "cp949")
+        location_t = open(input(("\nEnter TWEET file location\n")),encoding = "cp949")
+        location_f = open(input(("\nEnter FRIEND file location\n")),encoding = "cp949")
+
+class User: #user 통계 담당
     def __init__(self):
         self.n =
 
-    def u_add(self):
 
-class Tweet:
+class Tweet: #tweet 통계 담당
     def __init__(self):
 
     def t_add():
 
-    def t_delete(): # tweet delete는 별개로 수행
+    def t_delete():
 
     def t_find
 
-class Friend:
+class Friend: #friend 통계 담당
     def __init(self):
 
     def f_add():
 
-    def f_delete(): # friend delete는 별개로 수행
+    def f_delete():
+
+class delete: #delete 통합수행
+
+
+
 
 class Scc:
     def
@@ -29,7 +39,7 @@ class Spath:
 
 
 
-def interface():
+def interface(): #interface는 결과값의 출력만 담당!!
     print("""
 0. Read data files
 1. display statistics
@@ -45,9 +55,7 @@ def interface():
 """)
     mselect = input("Select Menu: ")
     if mselect == 0: # 0. Read data files
-        location1 = input(("\nEnter USER file location\n"))
-        location2 = input(("\nEnter TWEET file location\n"))
-        location3 = input(("\nEnter FRIEND file location\n"))
+        Read.locate()
         #reading process
         print("""
 Total users: %d
@@ -110,7 +118,7 @@ who tweeted "%s"(%d)
 
 %s""" % ())
         print("Enter the index number of users you want delete")
-        input("Number should separated by comma(,) - ex)1,3,5 ")
+        print("Number should separated by comma(,) - ex)1,3,5 ")
         #user deleting process
         print("""
 %d users,
