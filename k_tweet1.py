@@ -1,45 +1,67 @@
-
-class Read: #add는 Read class에서 담당
-    def locate(self):
-        location_u = open(input(("\nEnter USER file location\n")),encoding = "cp949")
-        location_t = open(input(("\nEnter TWEET file location\n")),encoding = "cp949")
-        location_f = open(input(("\nEnter FRIEND file location\n")),encoding = "cp949")
-
-class User: #user 통계 담당
+class User:
     def __init__(self):
-        self.n =
+        self.name = "None"
+        self.tweets = 0
+        self.friends = 0
+        self.next_tweet = None
+        self.join_d = "None" # 가입날짜, 이 프로젝트에선 필요없는 데이터
 
-
-class Tweet: #tweet 통계 담당
+class Tweet:
     def __init__(self):
+        self.owner = "None"
+        self.content = "None"
+        self.next_tweet = None
+        self.tweet_number = 0
+        self.date = "None" # 트윗날짜, 이 프로젝트에선 필요없는 데이터
 
-    def t_add():
 
-    def t_delete():
+class Friend:
+    def __init__(self):
+        self.color
 
-    def t_find
 
-class Friend: #friend 통계 담당
-    def __init(self):
+    def add(self, v):
 
-    def f_add():
-
-    def f_delete():
 
 class delete: #delete 통합수행
 
-
-
-
 class Scc:
     def
-
 class Spath:
+    def aa(self):
+
+
+def u_read(user):
+    while
+        a = user.readline()
+        b = user.readline()
+        c = user.readline()
+        d = user.readline() # user의 매 4번째 줄은 공백임
+        a = User()
+        a.join_d = b
+        a.name = c
+
+def t_read(tweet):
+
+def f_read(friend):
+
+
+def zero(): # user는 이미 id에 따라 sorting 되어 있음, tweet과 friend는 한 사람 것이 모여있음
+    user = open(input(("\nEnter USER file location\n")), encoding="cp949")
+    tweet = open(input(("\nEnter TWEET file location\n")), encoding="cp949")
+    friend = open(input(("\nEnter FRIEND file location\n")), encoding="cp949")
+
+    u_read(user)
+    t_read(tweet)
+    f_read(friend)
 
 
 
 
-def interface(): #interface는 결과값의 출력만 담당!!
+def one():
+
+
+def interface():
     print("""
 0. Read data files
 1. display statistics
@@ -55,7 +77,7 @@ def interface(): #interface는 결과값의 출력만 담당!!
 """)
     mselect = input("Select Menu: ")
     if mselect == 0: # 0. Read data files
-        Read.locate()
+        zero()
         #reading process
         print("""
 Total users: %d
@@ -63,6 +85,7 @@ Total friendship records: %d
 Total tweets: %d"""%())
 
     elif mselect == 1: # 1. display statistics
+        one()
         #static process
         print("""
 Average number of friends: %f
