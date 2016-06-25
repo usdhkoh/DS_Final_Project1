@@ -1,0 +1,206 @@
+이 Python 프로그램의 interface는 다음과 같습니다.
+
+0. Read data files
+1. display statistics
+2. Top 5 most tweeted words
+3. Top 5 most tweeted users
+4. Find users who tweeted a specific word
+5. Find all people who are friends of the above users
+6. Delete users who mentioned a specific word
+7. Delete all users who mentioned a specific word
+8. Find strongly connected components
+9. Find shortest path from a given user
+99. Quit
+
+-------------
+<99. Quit>
+말 그대로 종료명령입니다.
+다시 물어보지 않고 그대로 종료하니 주의하시길 바랍니다.
+
+--------------------------------------
+
+<0. Read data files>
+반드시 우선적으로 실행해야 하는 명령입니다. 그렇지 않으면 에러가 발생합니다.
+에러인 경우의 우회 및 0.의 우선 실행 권유는 구현하지 않았습니다.  
+
+string 형태인 txt 파일을 주소로 받아 user,tweet,friend에 대한 정보를 정리하고
+그에 대한 통계를 낼 준비를 완료합니다(다듬기 과정)
+
+다음의 형태로 결과를 출력합니다.
+
+Total users: xxx
+Total friendship records: xxx
+Total tweets: xxx
+--------------------------------------
+
+<1. display statistics>
+0.실행시 동시에 계산하지않고 1.명령 실행 시에 통계수치를 계산합니다.
+단, friend와 tweet 개수는 빠른 수행을 위해 1. 명령 실행 시에 순회하지는 않고
+0.실행 시에 미리 count된 값을 사용합니다.
+
+다음의 형태로 결과를 출력합니다. 
+
+Average number of friends: xxx
+Minimum friends: xxx
+Maximum number of friends: xxx
+
+Average tweets per user: xxx
+Minimum tweets per user: xxx
+Maximum tweets per user: xxx
+---------------------------------------
+
+<2. Top 5 most tweeted words>
+모든 tweet들을 순회하며 tweet을 개수를 셉니다.
+효과적인 세기를 위해 길이->시작글자 순위로 index를 생성하여 비교합니다.
+
+다음의 형태로 결과를 출력합니다.
+
+ rank(tweeted)    content              
+     1.(xx)        aaaaa
+     2.(xx)        bbbbb
+     3.(xx)        ccccc
+     4.(xx)        ddddd
+     5.(xx)        eeeee  
+---------------------------------------
+
+<3. Top 5 most tweeted users>
+이 역시 미리 count된 값을 사용합니다.
+count된 값들을 순회하며 비교, rank를 매깁니다.
+
+다음의 형태로 결과를 출력합니다.
+
+ rank(tweeted)    id(user name)           
+     1.(xx)        aaaaa(yy)
+     2.(xx)        bbbbb(yy)
+     3.(xx)        ccccc(yy)
+     4.(xx)        ddddd(yy)
+     5.(xx)        eeeee(yy)
+----------------------------------------
+
+<4. Find users who tweeted a specific word>
+모든 tweet들을 순회하여 특정 단어가 발견되면 해당 tweet이 누구에 의한 것인지 밝혀냅니다.
+이후의 연산을 위해 4.의 결과는 저장됩니다.("xxxx"라 tweet을 한 user 목록 생성)
+결과값이 0이면 "No one tweeted "xxxx""가 출력됩니다.
+
+다음의 형태로 결과를 출력합니다.
+
+who tweeted "xxxx"(the number of users)
+
+aaaaa(name1)
+bbbbb(name2)
+ccccc(name3)
+ddddd(name4)
+eeeee(name5)
+.
+.
+.
+-------------------------------------------
+
+<5. Find all people who are friends of the above users>
+특정 user와 이어진 node를 조사하고 이와 이어진 user들을 찾습니다.
+친구가 없으면 "user_name has no friend"가 출력됩니다.
+
+
+다음의 형태로 결과를 출력합니다.
+
+user: xxxxxx(user_name)
+
+user_name's friends(the number of users)
+
+aaaaa(name1)
+bbbbb(name2)
+ccccc(name3)
+ddddd(name4)
+eeeee(name5)
+.
+.
+.
+--------------------------------------------
+
+<6. Delete users who mentioned a specific word>
+4.와 마찬가지로 모든 tweet 들을 순회하여 특정 단어가 발견되면 해당 tweet이 누구에 의한 것인지 밝혀냅니다.
+그 단어가 .4의 과정을 거쳤다면 좀 더 빠르게 수행됩니다. user가 삭제되면 해당 user와 연관된 tweet과 freind관계가 모두 삭제됩니다.
+다음으로 users 들 중 누구를 지울 것인지 물어봅니다.
+
+
+다음의 형태로 결과를 출력합니다.
+
+who tweeted "xxxx"(the number of users)
+
+1.aaaaa(name1)
+2.bbbbb(name2)
+3.ccccc(name3)
+4.ddddd(name4)
+5.eeeee(name5)
+.
+.
+.
+
+[유저 선택]
+1,3
+
+user(the number of users)
+
+aaaaaa
+bbbbbb
+
+are deleted.
+
+---------------------------------------------
+<7. Delete all users who mentioned a specific word>
+6.의 user 삭제 명령을 특정 단어를 언급한 사람 모두에게 적용합니다.
+
+다음의 형태로 결과를 출력합니다.
+
+who tweeted "xxxx"(the number of users)
+
+aaaaaa
+bbbbbb
+cccccc
+dddddd
+eeeeee
+.
+.
+.
+
+are all deleted.
+----------------------------------------------
+<8. Find strongly connected components>
+모든 user들간 node를 탐색합니다.(SCC찾기)
+
+다음의 형태로 결과를 출력합니다
+
+Those groups are strongly connected components
+
+1. 
+aaaaa(name1)
+bbbbb(name2)
+ccccc(name3)
+
+2.
+ddddd(name4)
+eeeee(name5)
+.
+.
+.
+
+-----------------------------------------------
+<9. Find shortest path from a given user>
+
+다음의 형태로 결과를 출력합니다.
+
+The shortest path from "aaaa" to "eeeee" is
+
+aaaaa 
+  |
+bbbbb 
+  |
+ccccc
+  |
+ddddd
+  |
+eeeee
+
+-----------------------------------------------
+<이외의 숫자>
+무시합니다.("Wrong number!" 출력)
